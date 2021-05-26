@@ -11,7 +11,7 @@ namespace TI4
         {
             try
             {
-              File.WriteAllBytes("../../File.txt", text);
+              File.WriteAllBytes("../../../text.txt", text);
             }
             catch
             {
@@ -24,7 +24,7 @@ namespace TI4
             byte[] fileData = null;
             try
             {
-               fileData = File.ReadAllBytes("../../File.txt");
+               fileData = File.ReadAllBytes("../../../text.txt");
             }
             catch
             {
