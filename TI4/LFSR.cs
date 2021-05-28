@@ -14,7 +14,7 @@
 
         private char Shift()
         {
-            var bnew = _bits[3] ^ _bits[0] & true;
+            var bnew = _bits[2] ^ _bits[27] & true;
             var result = _bits[^1] ? '1' : '0';
             for (var i = _bits.Length - 1; i > 0; i--)
             {
