@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,10 @@ namespace TI4
             return fileData;
         }
 
-        private static byte[] Encryption(byte[] text, byte[] key)
+        private static byte[] Encryption(IReadOnlyList<byte> text, IReadOnlyList<byte> key)
        {
-            var charArray = new byte[text.Length];
-            for(var i = 0; i < text.Length; i++)
+            var charArray = new byte[text.Count];
+            for(var i = 0; i < text.Count; i++)
             {
 
                 charArray[i] = (byte)(text[i] ^ key[i]);
@@ -62,7 +63,7 @@ namespace TI4
                 Console.WriteLine("Input number:");
                 var secretKey = Convert.ToInt32(Console.ReadLine());
                 bits = Convert.ToString(secretKey, 2);
-            } while (bits.Length != 24);
+            } while (bits.Length != 28);
             return bits;
         }
         public static void Main(string[] args)
@@ -74,7 +75,7 @@ namespace TI4
                 var bits = GetSecretKey();
                 var length = text.Length;
 
-                var lfsr = new Lfsr(24, bits);
+                var lfsr = new Lfsr(28, bits);
                 var key = lfsr.GetKey(length);
 
                 var cipherText = Encryption(text, BitsToBytes(new string(key)));
