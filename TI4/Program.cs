@@ -46,6 +46,7 @@ namespace TI4
             return charArray;
        }
 
+        //134217728 - 268435455
         private static byte[] BitsToBytes(string bitString)
         {
             return Enumerable.Range(0, bitString.Length / 8).
@@ -61,7 +62,7 @@ namespace TI4
             do
             {
                 Console.WriteLine("Input number:");
-                var secretKey = Convert.ToInt32(Console.ReadLine());
+                var secretKey = Convert.ToInt64(Console.ReadLine());
                 bits = Convert.ToString(secretKey, 2);
             } while (bits.Length != 28);
             return bits;
